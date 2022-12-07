@@ -13,7 +13,7 @@ public class Player
         attackPower = 1;
     }
 
-    public static boolean healthHigher(int val)
+    public boolean healthHigher(int val)
     {
         return (health > val || powered() > val);
     }
@@ -22,4 +22,6 @@ public class Player
     {
         return health * attackPower;
     }
+
+
 }
