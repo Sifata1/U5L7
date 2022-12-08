@@ -3,6 +3,29 @@ public class Temperature
     private double highTemp;
     private double lowTemp;
     private String tempScale;
+    public static final int FREEZING_TEMP_F = 32;
+    private static double highestTrackedTempF = 0;
+    private double lowestTrackedTempF = 0;
+
+    public double getHighTemp() {
+        return highTemp;
+    }
+
+    public double getLowTemp() {
+        return lowTemp;
+    }
+
+    public String getTempScale() {
+        return tempScale;
+    }
+
+    public static double getHighestTrackedTempF() {
+        return highestTrackedTempF;
+    }
+
+    public double getLowestTrackedTempF() {
+        return lowestTrackedTempF;
+    }
 
     // Precondition: scale must be: "F" or "C"; anything else will default to "F"
     public Temperature(double high, double low, String scale)
@@ -18,8 +41,25 @@ public class Temperature
         {
             tempScale = "F";
         }
+
+        if (scale.equals("F")) {
+          if (high > highestTrackedTempF)  highestTrackedTempF = high;
+          if (low < lowestTrackedTempF) lowestTrackedTempF = low;
+        }
+
+        if (scale.equals("C")) {
+            double convertLow = convertCtoF(low);
+            double convertHigh = convertCtoF(high);
+
+            if (convertHigh > highestTrackedTempF)  highestTrackedTempF = convertHigh;
+            if (convertLow < lowestTrackedTempF) lowestTrackedTempF = convertLow;
+        }
+
     }
 
+    public static boolean belowFreezing() {
+
+    }
     // 1. Add your two static methods here:
     public static double convertCtoF(double temp) {
         return (temp * (double) 9/5) + 32;

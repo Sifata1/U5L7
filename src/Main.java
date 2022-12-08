@@ -1,45 +1,49 @@
 public class Main
 {
-    public static void printKmAndMiles(double miles, double km) {
-        System.out.println(RaceUtility.milesToKm(miles));
-        System.out.println(RaceUtility.kmToMiles(km));
-    }
-
-    public static void printProperTitle(String title) {
-        System.out.println(RaceUtility.makeProper(title));
-    }
-
     public static void main(String[] args)
     {
-        double miles1 = 13.85;
-        double km1 = 40;
-        Main.printKmAndMiles(miles1,km1);
+        Temperature temp1 = new Temperature(68.5, 56.7, "F");
+        tempTest(temp1);
 
-        double miles2 = 26.42;
-        double km2 = 3.5;
-        Main.printKmAndMiles(miles2,km2);
+        Temperature temp2 = new Temperature(74.2, 60.5, "F");
+        tempTest(temp2);
 
-        double miles3 = 5;
-        double km3 = 20.50;
-        Main.printKmAndMiles(miles3,km3);
+        Temperature temp3 = new Temperature(27.65, 10.5, "C");
+        tempTest(temp3);
 
-        double miles4 = 0;
-        double km4 = 0;
-        Main.printKmAndMiles(miles4,km4);
+        Temperature temp4 = new Temperature(21.3, 9.8, "C");
+        tempTest(temp4);
 
-        String title = "welcome to the marathon!";
-        Main.printProperTitle(title);
+        Temperature temp5 = new Temperature(43.5, 29.8, "F");
+        tempTest(temp5);
 
-        title = "It's TIME for THE 5k!";
-        Main.printProperTitle(title);
+        Temperature temp6 = new Temperature(31.8, 30.2, "F");
+        tempTest(temp6);
 
-        title = "runners, take your marks...";
-        Main.printProperTitle(title);
+        Temperature temp7 = new Temperature(13.8, 2.4, "C");
+        tempTest(temp7);
 
-        title = "2 MILES TO GO!";
-        Main.printProperTitle(title);
+        Temperature temp8 = new Temperature(5.9, -3.65, "C");
+        tempTest(temp8);
 
-        title = "water break in 0.5 miles";
-        Main.printProperTitle(title);
+        // static variables maintain their current values
+        System.out.println("==============================");
+        tempTest(temp1);
+    }
+
+    public static void tempTest(Temperature temp)
+    {
+        // FINISH ME!
+        // use instance method getters
+        System.out.println("High temp: " +
+                System.out.println("Low temp: " +
+                        System.out.println("Scale: " +
+                                System.out.println("Below freezing? " +
+
+                                        // use static method getters
+                                        System.out.println("Highest tracked temp (F): " +
+                                                System.out.println("Lowest tracked temp (F): " +
+                                                        System.out.println("Ever saw freezing?: " +
+                                                                System.out.println("-----------");
     }
 }
