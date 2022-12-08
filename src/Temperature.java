@@ -5,7 +5,7 @@ public class Temperature
     private String tempScale;
     public static final int FREEZING_TEMP_F = 32;
     private static double highestTrackedTempF = 0;
-    private double lowestTrackedTempF = 0;
+    private static double lowestTrackedTempF = 0;
 
     public double getHighTemp() {
         return highTemp;
@@ -23,7 +23,7 @@ public class Temperature
         return highestTrackedTempF;
     }
 
-    public double getLowestTrackedTempF() {
+    public static double getLowestTrackedTempF() {
         return lowestTrackedTempF;
     }
 
@@ -58,7 +58,13 @@ public class Temperature
     }
 
     public static boolean belowFreezing() {
+        if (temp)
 
+        if (highestTrackedTempF < FREEZING_TEMP_F || lowestTrackedTempF < FREEZING_TEMP_F) {
+            return true;
+        } else {
+            return false;
+        }
     }
     // 1. Add your two static methods here:
     public static double convertCtoF(double temp) {
