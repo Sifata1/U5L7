@@ -1,5 +1,4 @@
-public class Temperature
-{
+public class Temperature {
     private double highTemp;
     private double lowTemp;
     private String tempScale;
@@ -28,38 +27,51 @@ public class Temperature
     }
 
     // Precondition: scale must be: "F" or "C"; anything else will default to "F"
-    public Temperature(double high, double low, String scale)
-    {
+    public Temperature(double high, double low, String scale) {
         highTemp = high;
         lowTemp = low;
 
-        if (scale.equals("F") || scale.equals("C"))
-        {
+        highestTrackedTempF = 0;
+        lowestTrackedTempF = 0;
+
+        if (scale.equals("F") || scale.equals("C")) {
             tempScale = scale;
-        }
-        else
-        {
+        } else {
             tempScale = "F";
         }
 
         if (scale.equals("F")) {
-          if (high > highestTrackedTempF)  highestTrackedTempF = high;
-          if (low < lowestTrackedTempF) lowestTrackedTempF = low;
-        }
-
-        if (scale.equals("C")) {
+            if (high > highestTrackedTempF) highestTrackedTempF = high;
+            if (low < lowestTrackedTempF) lowestTrackedTempF = low;
+        } else {
             double convertLow = convertCtoF(low);
             double convertHigh = convertCtoF(high);
 
-            if (convertHigh > highestTrackedTempF)  highestTrackedTempF = convertHigh;
+            if (convertHigh > highestTrackedTempF) highestTrackedTempF = convertHigh;
             if (convertLow < lowestTrackedTempF) lowestTrackedTempF = convertLow;
         }
 
     }
 
-    public static boolean belowFreezing() {
-        if (temp)
 
+    public boolean belowFreezing() {
+        double convertedH;
+        double convertedL;
+        if (tempScale.equals("C")) {
+            convertedH = convertCtoF(highTemp);
+            convertedL = convertCtoF(lowTemp);
+        } else {
+            convertedL = lowTemp;
+            convertedH = highTemp;
+        }
+        if (convertedL < FREEZING_TEMP_F || convertedH < FREEZING_TEMP_F) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static boolean sawFreezing() {
         if (highestTrackedTempF < FREEZING_TEMP_F || lowestTrackedTempF < FREEZING_TEMP_F) {
             return true;
         } else {
@@ -98,6 +110,7 @@ public class Temperature
         double r  = Math.round((num * 10)/10);
         return r;
     }
+
 
 
 
