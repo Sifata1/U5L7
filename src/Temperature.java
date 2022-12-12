@@ -31,9 +31,6 @@ public class Temperature {
         highTemp = high;
         lowTemp = low;
 
-        highestTrackedTempF = 0;
-        lowestTrackedTempF = 0;
-
         if (scale.equals("F") || scale.equals("C")) {
             tempScale = scale;
         } else {
@@ -43,16 +40,20 @@ public class Temperature {
         if (scale.equals("F")) {
             if (high > highestTrackedTempF) highestTrackedTempF = high;
             if (low < lowestTrackedTempF) lowestTrackedTempF = low;
+            Temperature.didSetFirstTemps();
         } else {
             double convertLow = convertCtoF(low);
             double convertHigh = convertCtoF(high);
 
             if (convertHigh > highestTrackedTempF) highestTrackedTempF = convertHigh;
             if (convertLow < lowestTrackedTempF) lowestTrackedTempF = convertLow;
+            Temperature.didSetFirstTemps()
         }
-
     }
 
+    private static boolean didSetFirstTemps() {
+
+    }
 
     public boolean belowFreezing() {
         double convertedH;
@@ -110,9 +111,6 @@ public class Temperature {
         double r  = Math.round((num * 10)/10);
         return r;
     }
-
-
-
 
     // 4. Complete the toString method below (using your static helper method)
     //    so it returns a String that prints like:
